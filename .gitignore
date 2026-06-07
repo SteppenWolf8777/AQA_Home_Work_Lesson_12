@@ -1,0 +1,8 @@
+/.venv
+/.idea
+/__pycache__
+/tests/allure-results
+/tests/__pycache__/
+allure-results/
+pages/__pycache__/
+utils/__pycache__/
