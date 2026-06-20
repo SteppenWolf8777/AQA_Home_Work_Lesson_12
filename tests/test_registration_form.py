@@ -9,8 +9,9 @@ from pages.registration_page import RegistrationPage
 @allure.title("Successful fill form")
 def test_successful(setup_browser):
     registration_page = RegistrationPage(setup_browser)
-    first_name = "Alex"
-    last_name = "Egorov"
+    first_name = "Alexandr"
+    last_name = "Rusakov"
+    email = "alexanderrusakov01@mail.ru"
 
     with allure.step("Open registration form"):
         registration_page.open()
@@ -18,7 +19,7 @@ def test_successful(setup_browser):
     with allure.step("Fill form"):
         registration_page.fill_first_name(first_name)
         registration_page.fill_last_name(last_name)
-        registration_page.fill_email("alex@egorov.com")
+        registration_page.fill_email(email)
         # TODO Move to pageobject
         # driver.find_element(By.CSS_SELECTOR, "#genterWrapper").find_element(
         #     By.XPATH, ".//*[text()='Other']"
