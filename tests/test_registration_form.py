@@ -12,6 +12,7 @@ def test_successful(setup_browser):
     first_name = "Alexandr"
     last_name = "Rusakov"
     email = "alexanderrusakov01@mail.ru"
+    number = "1231231231"
 
     with allure.step("Open registration form"):
         registration_page.open()
@@ -20,11 +21,9 @@ def test_successful(setup_browser):
         registration_page.fill_first_name(first_name)
         registration_page.fill_last_name(last_name)
         registration_page.fill_email(email)
+        registration_page.fill_gender()
+        registration_page.fill_number()
         # TODO Move to pageobject
-        # driver.find_element(By.CSS_SELECTOR, "#genterWrapper").find_element(
-        #     By.XPATH, ".//*[text()='Other']"
-        # ).click()
-        # driver.find_element(By.CSS_SELECTOR, "#userNumber").send_keys("1231231230")
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys("Maths")
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys(Keys.ENTER)
         # sports_label = driver.find_element(By.CSS_SELECTOR, "#hobbiesWrapper").find_element(

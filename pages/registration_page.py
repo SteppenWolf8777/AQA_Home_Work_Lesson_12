@@ -56,3 +56,17 @@ class RegistrationPage:
         element = self.driver.find_element(*self.EMAIL)
         element.clear()
         element.send_keys(email)
+
+    @allure.step("Fill gender field with {gender}")
+    def fill_gender(self, gender):
+        """Fill gender field"""
+        self.driver.find_element(By.CSS_SELECTOR, "#genterWrapper").find_element(
+            By.XPATH, ".//*[text()='Other']"
+        ).click()
+
+    @allure.step("Fill number field with {number}")
+    def fill_number(self, number):
+        """Fill number field"""
+        element = self.driver.find_element(*self.MOBILE)
+        element.clear()
+        element.send_keys(number)
