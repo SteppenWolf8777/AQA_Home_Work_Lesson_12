@@ -60,9 +60,7 @@ class RegistrationPage:
     @allure.step("Fill gender")
     def fill_gender(self):
         """Fill gender field"""
-        self.driver.find_element(By.CSS_SELECTOR, "#genterWrapper").find_element(
-            By.XPATH, ".//*[text()='Other']"
-        ).click()
+        self.driver.find_element(*self.GENDER_MALE).click()
 
     @allure.step("Fill number field with {number}")
     def fill_number(self, number):
@@ -74,7 +72,24 @@ class RegistrationPage:
     @allure.step("Fill dateOfBirth")
     def fill_date_of_birth(self):
         """Fill dateOfBirth"""
-        self.driver.find_element(By.CSS_SELECTOR, "#dateOfBirthInput").find_element(
-            By.XPATH, "dateOfBirthInput"
-        ).click()
+        self.driver.find_element(*self.DATE_OF_BIRTH).click()
+        self.driver.find_element(By.CSS_SELECTOR, ".react-datepicker__month-select").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".react-datepicker__month-select option[value='11']").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".react-datepicker__year-select").click()
+        self.driver.find_element(By.CSS_SELECTOR, ".react-datepicker__year-select option[value='1999']").click()
+        self.driver.find_element(By.CSS_SELECTOR, "[aria-label='Choose Sunday, December 5th, 1999']").click()
+
+    @allure.step("Fill Subjects field with {subjects}")
+    def fill_subjects(self, subjects):
+        """Fill subjects field"""
+        element = self.driver.find_element(*self.SUBJECTS)
+        element.clear()
+        element.send_keys(subjects)
+        element.send_keys(Keys.ENTER)
+
+    @allure.step("Fill Hobbies")
+    def fill_hobbies(self):
+        """Fill Hobbies field"""
+        self.driver.find_element(*self.HOBBIES_SPORTS).click()
+
 

@@ -13,6 +13,7 @@ def test_successful(setup_browser):
     last_name = "Rusakov"
     email = "alexanderrusakov01@mail.ru"
     number = "1231231231"
+    subjects = "Maths"
 
     with allure.step("Open registration form"):
         registration_page.open()
@@ -24,6 +25,8 @@ def test_successful(setup_browser):
         registration_page.fill_gender()
         registration_page.fill_number(number)
         registration_page.fill_date_of_birth()
+        registration_page.fill_subjects(subjects)
+        registration_page.fill_hobbies()
         # TODO Move to pageobject
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys("Maths")
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys(Keys.ENTER)
