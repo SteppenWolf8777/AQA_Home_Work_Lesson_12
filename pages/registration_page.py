@@ -33,8 +33,8 @@ class RegistrationPage:
         self.driver.get(self.URL)
         wrapper = self.driver.find_element(By.CSS_SELECTOR, ".practice-form-wrapper")
         assert "Student Registration Form" in wrapper.text
-        self.driver.execute_script("$('footer').remove()")
-        self.driver.execute_script("$('#fixedban').remove()")
+        # self.driver.execute_script("$('footer').remove()")
+        # self.driver.execute_script("$('#fixedban').remove()")
 
     @allure.step("Fill first name field with {first_name}")
     def fill_first_name(self, first_name):
@@ -57,8 +57,8 @@ class RegistrationPage:
         element.clear()
         element.send_keys(email)
 
-    @allure.step("Fill gender field with {gender}")
-    def fill_gender(self, gender):
+    @allure.step("Fill gender")
+    def fill_gender(self):
         """Fill gender field"""
         self.driver.find_element(By.CSS_SELECTOR, "#genterWrapper").find_element(
             By.XPATH, ".//*[text()='Other']"
@@ -70,3 +70,11 @@ class RegistrationPage:
         element = self.driver.find_element(*self.MOBILE)
         element.clear()
         element.send_keys(number)
+
+    @allure.step("Fill dateOfBirth")
+    def fill_date_of_birth(self):
+        """Fill dateOfBirth"""
+        self.driver.find_element(By.CSS_SELECTOR, "#dateOfBirthInput").find_element(
+            By.XPATH, "dateOfBirthInput"
+        ).click()
+

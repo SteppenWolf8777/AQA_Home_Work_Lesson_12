@@ -22,7 +22,8 @@ def test_successful(setup_browser):
         registration_page.fill_last_name(last_name)
         registration_page.fill_email(email)
         registration_page.fill_gender()
-        registration_page.fill_number()
+        registration_page.fill_number(number)
+        registration_page.fill_date_of_birth()
         # TODO Move to pageobject
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys("Maths")
         # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys(Keys.ENTER)
