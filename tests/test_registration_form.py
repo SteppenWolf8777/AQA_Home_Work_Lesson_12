@@ -27,12 +27,8 @@ def test_successful(setup_browser):
         registration_page.fill_date_of_birth()
         registration_page.fill_subjects(subjects)
         registration_page.fill_hobbies()
+        registration_page.fill_upload_photo()
         # TODO Move to pageobject
-        # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys("Maths")
-        # driver.find_element(By.CSS_SELECTOR, "#subjectsInput").send_keys(Keys.ENTER)
-        # sports_label = driver.find_element(By.CSS_SELECTOR, "#hobbiesWrapper").find_element(
-        #     By.XPATH, ".//*[text()='Sports']"
-        # )
         # driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", sports_label)
         # sports_clickable = WebDriverWait(driver, 10).until(
         #     EC.element_to_be_clickable((By.XPATH, "//*[@id='hobbiesWrapper']//*[text()='Sports']"))
