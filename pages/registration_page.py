@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
+from pathlib import Path
+import photo
 
 
 class RegistrationPage:
@@ -92,4 +94,21 @@ class RegistrationPage:
         """Fill Hobbies field"""
         self.driver.find_element(*self.HOBBIES_SPORTS).click()
 
+    @allure.step("Fill Photo")
+    def fill_upload_photo(self, driver, file_name: str = "484105895.jpg"):
+        """Fill Photo field with specific file"""
+        # Базовый путь к папке с фото (настрой под свою структуру)
+        base_dir = Path(__file__).parent / "assets"  # или укажи абсолютный путь, например Path(r"C:\photos")
+        file_path = base_dir / file_name
 
+        # Проверяем, что файл существует — это поможет избежать FileNotFoundError (как в твоих прошлых кейсах)
+        if not file_path.exists():
+            raise FileNotFoundError(f"Файл не найден: {file_path.resolve()}")
+
+        wait = WebDriverWait(driver, 10)
+        # Используем твой CSS-селектор для поля загрузки
+        locator = (By.CSS_SELECTOR, "#uploadPicture")
+        file_input = wait.until(EC.presence_of_element_located(locator))
+
+        absolute_path = str(file_path.resolve())
+        file_input.send_keys(absolute_path)
