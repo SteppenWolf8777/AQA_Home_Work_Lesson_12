@@ -103,3 +103,10 @@ class RegistrationPage:
         file_input = wait.until(EC.element_to_be_clickable(locator))
         file_input.send_keys(str(file_path.resolve()))
 
+    @allure.step("Fill Address field with {address}")
+    def address(self, address):
+        """Fill Address field"""
+        element = self.wait.until(EC.visibility_of_element_located(self.CURRENT_ADDRESS))
+        element.clear()
+        element.send_keys(address)
+

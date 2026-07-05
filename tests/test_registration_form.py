@@ -14,6 +14,7 @@ def test_successful(setup_browser):
     email = "alexanderrusakov01@mail.ru"
     number = "1231231231"
     subjects = "Maths"
+    address = "Test Address"
 
     with allure.step("Open registration form"):
         registration_page.open()
@@ -28,6 +29,7 @@ def test_successful(setup_browser):
         registration_page.fill_subjects(subjects)
         registration_page.fill_hobbies()
         registration_page.fill_upload_photo()
+        registration_page.address(address)
         # TODO Move to pageobject
         # driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", sports_label)
         # sports_clickable = WebDriverWait(driver, 10).until(
